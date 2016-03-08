@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+
+{% block context %}
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Customer Details.
+  <a class="btn btn-info" href="{% url 'customer_edit' pk=customer.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+  <a class="btn btn-danger" href="{% url 'customer_remove' pk=customer.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+  </div>
+  <div class="panel-body">
+  {% if customer.validation == 0 %}
+  <div class="alert alert-warning">
+    <p>The next info is not confirmed.</p>
+  </div>
+  {% elif customer.validation == 1 %}
+  <div class="alert alert-success">
+    <p>The next info has been verified by Test App staff and it's confirmed as trusted.</p>
+  </div>
+  {% elif customer.validation == 2 %}
+  <div class="alert alert-danger">
+  	<p>The next info has been verified and is not trusted.</p>
+  </div>
+  {% endif %}
+
+  </div>
+<ul class="list-group">
+  <li class="list-group-item">First Name: {{ customer.first_name }}</li>
+  <li class="list-group-item">Last Name: {{ customer.last_name }}</li>
+  <li class="list-group-item">ID: {{ customer.customer_id }}</li>
+  <li class="list-group-item">Phone Number: {{ customer.phone_number }}</li>
+  <li class="list-group-item">Address: {{ customer.address | linebreaks }}</li>
+  <li class="list-group-item">Registered at: {{ customer.registered_date }}</li>
+</ul>
+</div>
+
+{% endblock %}

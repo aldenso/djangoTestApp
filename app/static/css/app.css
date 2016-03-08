@@ -1,0 +1,39 @@
+.page-header {
+	padding: 10px 10px 10px 10px;
+	font-family: 'Sigmar One', cursive;
+	margin: 0;
+	color: #FFFFFF;
+	background-color: #437C17;
+}
+
+.page-header small {
+	font-family: 'Architects Daughter', cursive;
+	color: #FFFFFF;
+}
+
+.body {
+	padding-left: 15px;
+	font-family: 'Architects Daughter';
+	font-size: 14pt;
+}
+
+.panel-heading {
+	font-size: 15pt;
+}
+
+.panel {
+	font-size: 12pt;
+}
+
+.alert {
+	margin: 0;
+}
+
+.list-group {
+	color: #000000;
+	font-family: 'Architects Daughter';
+}
+
+.post-form textarea, .post-form input {
+	width: 100%;
+}

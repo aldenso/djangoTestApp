@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+
+{% block context %}
+
+{% if categories %}
+{% for category in categories %}
+<tr>
+<p>
+<ul class="list-group">
+  <li class="list-group-item"><img src="{{ category.image.url }}">
+  <a href="{% url 'category_detail' pk=category.pk %}">{{ category.name}}</a>
+  </li>
+  <li class="list-group-item">Description: {{ category.description | linebreaks }}</li>
+</ul>
+</p>
+</tr>
+{% endfor %}
+
+{% else %}
+<h1>No Categories registered yet :(</h1>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+
+{% block context %}
+<h1>Customers List!</h1>
+
+{% if customers %}
+{% for customer in customers %}
+<tr>
+<p>
+	<td><a href="{% url 'customer_detail' pk=customer.pk %}">{{ customer.full_name }}</a></td>
+	-
+	{% if customer.email %}
+	<td><small>Email: {{ customer.email }}</small></td>
+	{% else %}
+	<td><small>Email: Not registered.</small></td>
+	{% endif %}
+</p>
+</tr>
+{% endfor %}
+{% else %}
+<h1>No Customers registered yet :(</h1>
+{% endif %}
+
+{% endblock %}

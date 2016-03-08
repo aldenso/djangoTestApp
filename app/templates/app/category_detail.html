@@ -1,0 +1,21 @@
+{% extends 'app/base.html' %}
+
+{% block context %}
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Category Details.
+  <a class="btn btn-info" href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+  <a class="btn btn-danger" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+  </div>
+
+<ul class="list-group">
+  <li class="list-group-item">Name: {{ category.name }}</li>
+  <li class="list-group-item">Description: {{ category.description|linebreaks }}</li>
+  <li class="list-group-item">Image:<br /><img src="{{ category.image.url }}"></li>
+  <li class="list-group-item">Created at: {{ category.created_at }}</li>
+  <li class="list-group-item">Modified at: {{ category.modified_at }}</li>
+</ul>
+</div>
+
+{% endblock %}
