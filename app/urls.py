@@ -12,4 +12,5 @@ urlpatterns = [
 	# Category patterns
 	url(r'^category/$', views.category_list, name='category_list'),
 	url(r'^category/(?P<pk>[0-9]+)/detail/$', views.category_detail, name='category_detail'),
+	url(r'^category/new/$', views.category_add, name='category_add'),
 ]

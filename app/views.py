@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Customer, Category, Product
-from .forms import CustomerForm
+from .forms import CustomerForm, CategoryForm
 
 # Create your views here.
 
@@ -59,3 +59,14 @@ def category_list(request):
 def category_detail(request, pk):
 	category = get_object_or_404(Category, pk=pk)
 	return render(request, 'app/category_detail.html', {'category': category})
+
+def category_add(request):
+	if request.method == "POST":
+		form = CategoryForm(request.POST, request.FILES)
+		if form.is_valid():
+			category = form.save(commit=False)
+			category.register()
+			return redirect('category_detail', pk=category.pk)
+	else:
+		form = CategoryForm()
+	return render(request, 'app/category_edit.html', {'form': form})

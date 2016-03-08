@@ -55,17 +55,18 @@ class Category(models.Model):
 	name = models.CharField(max_length=20)
 	description = models.TextField()
 	slug = models.SlugField()
-	image = models.ImageField(upload_to='images/category')
+	image = models.ImageField(upload_to='images/category', blank=True, null=True)
 	created_at = models.DateTimeField(blank=True, null=True)
 	modified_at = models.DateTimeField(blank=True, null=True)
 
 	def register(self):
-		if self.created_at is None:
-			self.created_at = timezone.now()
-			self.modified_at = self.created_at
-		else:
-			self.modified_at = timezone.now()
-			self.save()
+		self.created_at = timezone.now()
+		self.modified_at = self.created_at
+		self.save()
+
+	def modify(self):
+		self.modified_at = timezone.now()
+		self.save()
 
 	def __str__(self):
 		return self.name
@@ -78,22 +79,20 @@ class Product(models.Model):
 	name = models.CharField(max_length=40)
 	description = models.TextField()
 	slug = models.SlugField()
-	price = models.DecimalField(max_digits=5, decimal_places=2)
+	price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 	image = models.ImageField(upload_to='images/products')
 	category = models.ManyToManyField(Category)
 	created_at = models.DateTimeField(blank=True, null=True)
 	modified_at = models.DateTimeField(blank=True, null=True)
 
 	def register(self):
-		if self.created_at is None:
-			self.created_at = timezone.now()
-			self.modified_at = self.created_at
-		else:
-			self.modified_at = timezone.now()
-			self.save()
+		self.created_at = timezone.now()
+		self.modified_at = self.created_at
+		self.save()
+
+	def modify(self):
+		self.modified_at = timezone.now()
+		self.save()
 			
 	def __str__(self):
 		return self.name
-
-		
-		
