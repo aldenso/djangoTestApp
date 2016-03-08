@@ -50,11 +50,8 @@ def customer_remove(request, pk):
 
 # Views for categories
 def category_list(request):
-	try:
-		categories = Category.objects.all() 
-		return render(request, 'app/category_list.html', {'categories': categories})
-	except:
-		return render(request, 'app/category_list.html', {})
+	categories = Category.objects.all()
+	return render(request, 'app/category_list.html', {'categories': categories})
 
 def category_detail(request, pk):
 	category = get_object_or_404(Category, pk=pk)
@@ -70,3 +67,21 @@ def category_add(request):
 	else:
 		form = CategoryForm()
 	return render(request, 'app/category_edit.html', {'form': form})
+
+def category_edit(request, pk):
+	category = get_object_or_404(Category, pk=pk)
+	if request.method == "POST":
+		form = CategoryForm(request.POST, instance=category)
+		if form.is_valid():
+			category = form.save(commit=False)
+			category.modify()
+			return redirect('category_detail', pk=category.pk)
+	else:
+		form = CategoryForm(instance=category)
+	return render(request, 'app/category_edit.html', {'form': form})
+
+def category_remove(request, pk):
+	category = get_object_or_404(Category, pk=pk)
+	category.delete()
+	categories = Category.objects.all()
+	return render(request, 'app/category_list.html', {'categories': categories})
