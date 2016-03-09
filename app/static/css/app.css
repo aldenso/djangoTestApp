@@ -37,3 +37,26 @@
 .post-form textarea, .post-form input {
 	width: 100%;
 }
+
+div {
+	display: block;
+}
+
+#wrapper-div {
+	width: 800px;
+	height: 250px;
+	margin: 4px;
+}
+
+#left-div {
+	float: left;
+	width: 25%;
+	height: 100s%;
+}
+
+#right-div {
+	float: left;
+	width: 75%;
+	height: 100%;
+	align-items: center;
+}

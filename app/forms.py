@@ -1,5 +1,5 @@
 from django import forms
-from .models import Customer, Category
+from .models import Customer, Category, Product
 
 class CustomerForm(forms.ModelForm):
 
@@ -13,4 +13,12 @@ class CategoryForm(forms.ModelForm):
 
 	class Meta():
 		model = Category
-		fields = ('name', 'description', 'slug', 'image')		
+		fields = ('name', 'description', 'slug', 'image')
+
+
+class ProductForm(forms.ModelForm):
+
+	class Meta():
+		model = Product
+		fields = ('name', 'description', 'slug', 'price', 'image', 'category')
+			

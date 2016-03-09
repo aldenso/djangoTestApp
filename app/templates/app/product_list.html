@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+
+{% block context %}
+
+{% if products %}
+{% for product in products %}
+
+<div id=wrapper-div>
+<div id="left-div">
+	
+	{% if product.image %}
+  <img src="{{ product.image.url }}">
+  	{% endif %}
+  </div>
+
+<div id="right-div">
+  <li class="list-group-item">Product: <a href="#">{{ product.name}}</a></li>
+  <li class="list-group-item">Description: {{ product.description | linebreaks }}</li>
+  <li class="list-group-item">Price: {{ product.price }}$</li>
+  <li class="list-group-item">Category:
+  {% for category in product.category.all %}
+  {{ category.name }}
+  {% endfor %}
+  </li>
+</div>
+</div>
+
+
+{% endfor %}
+
+{% else %}
+<h1>No Products registered yet :(</h1>
+
+{% endif %}
+{% endblock %}

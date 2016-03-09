@@ -15,4 +15,6 @@ urlpatterns = [
 	url(r'^category/new/$', views.category_add, name='category_add'),
 	url(r'^category/(?P<pk>[0-9]+)/edit/$', views.category_edit, name='category_edit'),
 	url(r'^category/(?P<pk>[0-9]+)/remove/$', views.category_remove, name='category_remove'),
+	# Products patterns
+	url(r'^products/$', views.product_list, name='product_list'),
 ]

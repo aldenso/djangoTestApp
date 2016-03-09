@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Customer, Category, Product
-from .forms import CustomerForm, CategoryForm
+from .forms import CustomerForm, CategoryForm, ProductForm
 
 # Create your views here.
 
@@ -9,11 +9,8 @@ def index(request):
 
 # Views for customers
 def customer_list(request):
-	try:
-		customers = Customer.objects.all() 
-		return render(request, 'app/customer_list.html', {'customers': customers})
-	except:
-		return render(request, 'app/customer_list.html', {})
+	customers = Customer.objects.all() 
+	return render(request, 'app/customer_list.html', {'customers': customers})
 
 def customer_detail(request, pk):
 	customer = get_object_or_404(Customer, pk=pk)
@@ -85,3 +82,8 @@ def category_remove(request, pk):
 	category.delete()
 	categories = Category.objects.all()
 	return render(request, 'app/category_list.html', {'categories': categories})
+
+# Views for Products
+def product_list(request):
+	products = Product.objects.all()
+	return render(request, 'app/product_list.html', {'products': products})
