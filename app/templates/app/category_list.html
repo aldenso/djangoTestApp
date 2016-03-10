@@ -7,9 +7,9 @@
 <tr>
 <p>
 <ul class="list-group">
-	{% if category.image %}
+    {% if category.image %}
   <li class="list-group-item"><img src="{{ category.image.url }}">
-  	{% endif %}
+    {% endif %}
   <a href="{% url 'category_detail' pk=category.pk %}">{{ category.name}}</a>
   </li>
   <li class="list-group-item">Description: {{ category.description | linebreaks }}</li>
