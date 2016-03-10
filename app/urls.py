@@ -16,5 +16,9 @@ urlpatterns = [
 	url(r'^category/(?P<pk>[0-9]+)/edit/$', views.category_edit, name='category_edit'),
 	url(r'^category/(?P<pk>[0-9]+)/remove/$', views.category_remove, name='category_remove'),
 	# Products patterns
-	url(r'^products/$', views.product_list, name='product_list'),
+	url(r'^product/$', views.product_list, name='product_list'),
+	url(r'^product/(?P<pk>[0-9]+)/detail/$', views.product_detail, name='product_detail'),
+	url(r'^product/new/$', views.product_add, name='product_add'),
+	url(r'^product/(?P<pk>[0-9]+)/edit/$', views.product_edit, name='product_edit'),
+	url(r'^product/(?P<pk>[0-9]+)/remove/$', views.product_remove, name='product_remove'),
 ]

@@ -14,7 +14,7 @@
   </div>
 
 <div id="right-div">
-  <li class="list-group-item">Product: <a href="#">{{ product.name}}</a></li>
+  <li class="list-group-item">Product: <a href="{% url 'product_detail' pk=product.pk %}">{{ product.name}}</a></li>
   <li class="list-group-item">Description: {{ product.description | linebreaks }}</li>
   <li class="list-group-item">Price: {{ product.price }}$</li>
   <li class="list-group-item">Category:

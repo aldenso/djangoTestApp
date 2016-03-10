@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+
+{% block context %}
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Product Details.
+  <a class="btn btn-info" href="{% url 'product_edit' pk=product.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+  <a class="btn btn-danger" href="{% url 'product_remove' pk=product.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+  </div>
+
+<ul class="list-group">
+  <li class="list-group-item">Name: {{ product.name }}</li>
+  <li class="list-group-item">Description: {{ product.description|linebreaks }}</li>
+  {% if product.image %}
+  <li class="list-group-item">Image:<br /><img src="{{ product.image.url }}"></li>
+  {% endif %}
+  <li class="list-group-item">Slug: {{ product.slug }}</li>
+  <li class="list-group-item">Price: {{ product.price }}</li>
+  <li class="list-group-item">Category:
+  {% for category in product.category.all %}
+  {{ category.name }}
+  {% endfor %}
+  </li>
+  <li class="list-group-item">Created at: {{ product.created_at }}</li>
+  <li class="list-group-item">Modified at: {{ product.modified_at }}</li>
+</ul>
+</div>
+
+{% endblock %}

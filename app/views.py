@@ -68,7 +68,7 @@ def category_add(request):
 def category_edit(request, pk):
 	category = get_object_or_404(Category, pk=pk)
 	if request.method == "POST":
-		form = CategoryForm(request.POST, instance=category)
+		form = CategoryForm(request.POST, request.FILES, instance=category)
 		if form.is_valid():
 			category = form.save(commit=False)
 			category.modify()
@@ -85,5 +85,38 @@ def category_remove(request, pk):
 
 # Views for Products
 def product_list(request):
+	products = Product.objects.all()
+	return render(request, 'app/product_list.html', {'products': products})
+
+def product_detail(request, pk):
+	product = get_object_or_404(Product, pk=pk)
+	return render(request, 'app/product_detail.html', {'product': product})
+
+def product_add(request):
+	if request.method == "POST":
+		form = ProductForm(request.POST, request.FILES)
+		if form.is_valid():
+			product = form.save()
+			product.register()
+			return redirect('product_detail', pk=product.pk)
+	else:
+		form = ProductForm()
+	return render(request, 'app/product_edit.html', {'form': form})
+
+def product_edit(request, pk):
+	product = get_object_or_404(Product, pk=pk)
+	if request.method == "POST":
+		form = ProductForm(request.POST, request.FILES, instance=product)
+		if form.is_valid():
+			product = form.save()
+			product.modify()
+			return redirect('product_detail', pk=product.pk)
+	else:
+		form = ProductForm(instance=product)
+	return render(request, 'app/product_edit.html', {'form': form})
+
+def product_remove(request, pk):
+	product = get_object_or_404(Product, pk=pk)
+	product.delete()
 	products = Product.objects.all()
 	return render(request, 'app/product_list.html', {'products': products})

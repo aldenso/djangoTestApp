@@ -20,5 +20,6 @@ class ProductForm(forms.ModelForm):
 
 	class Meta():
 		model = Product
-		fields = ('name', 'description', 'slug', 'price', 'image', 'category')
-			
+		widgets = {'created_at': forms.HiddenInput(), 'modified_at':forms.HiddenInput()}
+		fields = ('name', 'description', 'slug', 'price', 'category', 'image', 'created_at',
+			'modified_at')			

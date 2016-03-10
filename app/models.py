@@ -81,9 +81,10 @@ class Product(models.Model):
 	slug = models.SlugField(unique=True)
 	price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 	image = models.ImageField(upload_to='images/products', blank=True, null=True)
-	category = models.ManyToManyField(Category)
+	category = models.ManyToManyField(Category, blank=True, null=True)
 	created_at = models.DateTimeField(blank=True, null=True)
 	modified_at = models.DateTimeField(blank=True, null=True)
+
 
 	def register(self):
 		self.created_at = timezone.now()
