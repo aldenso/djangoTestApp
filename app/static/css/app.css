@@ -56,3 +56,24 @@
 	height: 100%;
 	align-items: center;
 }
+
+.principal-div {
+	text-align: center;
+	color: #C11B17;
+}
+
+.principal-div p {
+	text-align: center;
+	color: #646D7E;
+}
+
+.row {
+	text-align: center;
+}
+
+.col-md-3 h3 {
+	color: #2B547E;
+}
+.col-md-3 p {
+	font-size: 12pt;
+}
