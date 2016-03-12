@@ -60,20 +60,59 @@
 .principal-div {
 	text-align: center;
 	color: #C11B17;
+	font-family: 'Sigmar One', cursive;
 }
 
 .principal-div p {
 	text-align: center;
 	color: #646D7E;
+	font-family: 'Architects Daughter';
+}
+
+.panel-heading {
+	margin-bottom: 1px;
+}
+
+.panel-body {
+	margin-top: 1px;
+}
+
+.content-center {
+	text-align: center;
 }
 
 .row {
 	text-align: center;
+	margin-top: 15px;
 }
 
+.col-md-3 i {
+	margin-top: 25px;
+}
 .col-md-3 h3 {
+	margin-top: 1px;
 	color: #2B547E;
 }
 .col-md-3 p {
 	font-size: 12pt;
 }
+
+.col-md-3 a {
+	font-size: 12pt;
+	margin-bottom: 20px;
+}
+
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
